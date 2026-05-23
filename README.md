@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍔 Full Stack Restaurant Ordering App
 
-## Getting Started
+A full-stack food ordering web application built with Next.js.  
+This project simulates a real-world restaurant ordering system with authentication, cart management, payments, and admin controls.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📸 Screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Home Page
+![Home](./screenshots/home1.png) 
+![Home](./screenshots/home2.png) 
+![Home](./screenshots/home3.png) 
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Menu Page
+![Menu](./screenshots/menu.png)
+![Menu](./screenshots/menu_pastas.png)
+![Menu](./screenshots/menu_pizzas.png)
+![Menu](./screenshots/menu_burgers.png)
+### Cart Page
+![Cart](./screenshots/cart.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Order Status
+![Orders](./screenshots/order_status.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Payment Page
+![Payment](./screenshots/payment.png)
 
-## Deploy on Vercel
+### Payment Success
+![Success](./screenshots/payment_successfull.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Features
+
+- User authentication (NextAuth)
+- Browse food categories (Pizza, Burgers, Pasta, etc.)
+- Add/remove items from cart
+- Dynamic product pages
+- Order tracking system
+- Admin panel for updating order status
+- Stripe payment integration (test mode)
+- Cloudinary image uploads
+- Responsive UI for all devices
+
+---
+
+## 🛠️ Tech Stack
+
+- Next.js (App Router)
+- React.js
+- TypeScript
+- Tailwind CSS
+- Prisma ORM
+- PostgreSQL
+- NextAuth.js
+- Stripe API
+- Cloudinary
+
+---
+
+## 🧠 What I Learned
+
+This project helped me understand:
+
+- Full-stack architecture using Next.js
+- API routes and server-side logic
+- Authentication flow with NextAuth
+- Database modeling using Prisma
+- Payment integration using Stripe
+- Image upload handling with Cloudinary
+- State management and UI optimization
+- Real-world deployment workflow
+
+---
+
+## 📂 Project Structure
