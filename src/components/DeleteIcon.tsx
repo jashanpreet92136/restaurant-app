@@ -18,7 +18,7 @@ const DeleteIcon = ({ id }: { id: string }) => {
 
   const handleDelete = async () => {
     console.log("clicked");
-    const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+    const res = await fetch(`/api/products/${id}`, {
       method: "DELETE",
     });
     console.log("res" + res);

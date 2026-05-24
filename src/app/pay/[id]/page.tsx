@@ -13,12 +13,9 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:3000/api/create-intent/${id}`,
-          {
-            method: "POST",
-          },
-        );
+        const res = await fetch(`/api/create-intent/${id}`, {
+          method: "POST",
+        });
         const data = await res.json();
 
         setClientSecret(data.clientSecret);
