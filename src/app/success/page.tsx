@@ -2,34 +2,35 @@
 
 import { useCartStore } from "@/utils/store";
 import { useSearchParams, useRouter } from "next/navigation";
-
 import React, { useEffect } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
 
 const Page = () => {
-  const searchParama = useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const { clearCart } = useCartStore();
 
-  clearCart();
+  const payment_intent = searchParams.get("payment_intent");
 
-  const payment_intent = searchParama.get("payment_intent");
-  console.log("pay " + payment_intent);
-  const router = useRouter();
   useEffect(() => {
+    if (!payment_intent) return;
+
     const makeRequest = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:3000/api/confirm/${payment_intent}`,
-          {
-            method: "PUT",
-          },
-        );
+        await fetch(`/api/confirm/${payment_intent}`, {
+          method: "PUT",
+        });
 
+        clearCart();
         router.push("/orders");
-      } catch (e) {}
+      } catch (e) {
+        console.error(e);
+      }
     };
+
     makeRequest();
-  }, [payment_intent]);
+  }, [payment_intent, router, clearCart]);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-6">
       <ConfettiExplosion

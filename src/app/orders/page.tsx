@@ -14,8 +14,12 @@ const orders = () => {
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"],
-    queryFn: () =>
-      fetch("http://localhost:3000/api/orders").then((res) => res.json()),
+    queryFn: async () => {
+      const res = await fetch("/api/orders");
+      const result = await res.json();
+
+      return Array.isArray(result) ? result : [];
+    },
   });
 
   const mutation = useMutation({
