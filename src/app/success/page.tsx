@@ -1,48 +1,14 @@
 "use client";
 
-import { useCartStore } from "@/utils/store";
-import { useSearchParams, useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import ConfettiExplosion from "react-confetti-explosion";
+import SuccessContent from "@/components/Success-Content";
+import { Suspense } from "react";
 
-const Page = () => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const { clearCart } = useCartStore();
+export const dynamic = "force-dynamic";
 
-  const payment_intent = searchParams.get("payment_intent");
-
-  useEffect(() => {
-    if (!payment_intent) return;
-
-    const makeRequest = async () => {
-      try {
-        await fetch(`/api/confirm/${payment_intent}`, {
-          method: "PUT",
-        });
-
-        clearCart();
-        router.push("/orders");
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
-    makeRequest();
-  }, [payment_intent, router, clearCart]);
-
+export default function Page() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-6">
-      <ConfettiExplosion
-        force={0.8}
-        duration={3000}
-        particleCount={550}
-        width={1600}
-      />
-
-      <h1 className="text-4xl font-bold">Payment Successful 🎉</h1>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
   );
-};
-
-export default Page;
+}

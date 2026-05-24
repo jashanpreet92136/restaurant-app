@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const PUT = async (
   req: NextRequest,
-  { params }: { params: { intentId: string } },
+  { params }: { params: Promise<{ intentId: string }> },
 ) => {
-  const { intentId } = params;
+  const { intentId } = await params;
 
   try {
     await prisma.order.updateMany({
