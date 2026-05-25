@@ -2,11 +2,20 @@ import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { headers } from "next/headers";
+
+async function absoluteUrl(path: string) {
+  const h = await headers();
+  const host = h.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  return `${protocol}://${host}${path}`;
+}
 
 const getData = async (category: string) => {
-  const res = await fetch(`/api/products?cat=${category}`, {
+  const res = await fetch(await absoluteUrl(`/api/products?cat=${category}`), {
     cache: "no-store",
   });
+
   if (!res.ok) {
     throw new Error("Failed");
   }

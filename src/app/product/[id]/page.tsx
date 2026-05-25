@@ -1,16 +1,25 @@
 import BackButton from "@/components/BackButton";
 import DeleteIcon from "@/components/DeleteIcon";
 import Price from "@/components/Price";
+import { headers } from "next/headers";
 
 import { Product } from "@/types/types";
 import Image from "next/image";
 import React from "react";
+async function absoluteUrl(path: string) {
+  const h = await headers();
+  const host = h.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  return `${protocol}://${host}${path}`;
+}
 
 const getData = async (id: string) => {
-  const res = await fetch(`/api/products/${id}`, {
+  const url = await absoluteUrl(`/api/products/${id}`);
+
+  const res = await fetch(url, {
     cache: "no-store",
   });
-  console.log(res.status);
+
   if (!res.ok) {
     throw new Error("Failed");
   }

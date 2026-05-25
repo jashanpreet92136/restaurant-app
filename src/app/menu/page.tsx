@@ -1,9 +1,19 @@
 import { Menu } from "@/types/types";
 import Link from "next/link";
 import React from "react";
+import { headers } from "next/headers";
 
+// Build absolute URL for server-side fetch
+async function absoluteUrl(path: string) {
+  const h = await headers();
+  const host = h.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  return `${protocol}://${host}${path}`;
+}
 const getData = async () => {
-  const res = await fetch("/api/categories", {
+  const url = await absoluteUrl("/api/categories");
+
+  const res = await fetch(url, {
     cache: "no-store",
   });
   if (!res.ok) {
