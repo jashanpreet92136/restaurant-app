@@ -45,18 +45,24 @@ const Menu = () => {
       {open && (
         <div className="bg-red-500 w-screen gap-8 z-10 text-white absolute left-0 top-24 h-[calc(100vh-6rem)] flex items-center justify-center text-3xl flex-col">
           {links.map((item) => (
-            <Link key={item.id} href={item.url}>
+            <Link key={item.id} href={item.url} onClick={() => setOpen(false)}>
               {item.title}
             </Link>
           ))}
 
           {!user ? (
-            <Link href="/login">Login</Link>
+            <Link href="/login" onClick={() => setOpen(false)}>
+              Login
+            </Link>
           ) : (
-            <Link href="/orders">Orders</Link>
+            <Link href="/orders" onClick={() => setOpen(false)}>
+              Orders
+            </Link>
           )}
 
-          <CartIcon />
+          <div onClick={() => setOpen(false)}>
+            <CartIcon />
+          </div>
         </div>
       )}
     </div>
