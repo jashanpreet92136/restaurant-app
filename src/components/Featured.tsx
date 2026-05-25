@@ -2,9 +2,18 @@ import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { headers } from "next/headers";
 
+async function absoluteUrl(path: string) {
+  const h = await headers();
+  const host = h.get("host");
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  return `${protocol}://${host}${path}`;
+}
 const getData = async () => {
-  const res = await fetch("/api/products", {
+  const url = await absoluteUrl("/api/products");
+
+  const res = await fetch(url, {
     cache: "no-store",
   });
   if (!res.ok) {
