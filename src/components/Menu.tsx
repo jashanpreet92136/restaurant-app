@@ -36,7 +36,7 @@ const Menu = () => {
     <div>
       <Image
         onClick={handleOnClick}
-        src={open ? "/open.png" : "/close.png"}
+        src={open ? "/close.png" : "/open.png"}
         width={20}
         height={20}
         alt=""
