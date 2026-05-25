@@ -17,7 +17,7 @@ export default function SuccessContent() {
 
     const makeRequest = async () => {
       try {
-        await fetch(`/api/confirm/${payment_intent}`, {
+        await fetch(`/api/checkout/confirm/${payment_intent}`, {
           method: "PUT",
         });
 
