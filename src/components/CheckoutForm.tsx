@@ -52,7 +52,7 @@ const CheckoutForm = () => {
       <PaymentElement />
       <AddressForm />
       <button
-        className=" bg-red-500 text-white p-2 mt-3 w-1/5 font-bold  sm:w-1/2 mx-auto rounded-md"
+        className=" bg-red-500 text-white p-2 mt-3 md:w-1/5 font-bold   mx-auto rounded-md"
         disabled={isLoading || !stripe || !elements}
       >
         {isLoading ? "Processing..." : "Pay now"}
