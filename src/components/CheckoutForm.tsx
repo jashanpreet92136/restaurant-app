@@ -28,11 +28,12 @@ const CheckoutForm = () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "/success",
+        return_url: `${window.location.origin}/success`,
       },
     });
 
     if (error) {
+      console.log(error);
       if (error.type === "card_error" || error.type === "validation_error") {
         setMessage(error.message || "Payment failed");
       } else {
