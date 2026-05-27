@@ -45,10 +45,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full p-2 sm:p-4"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full ">
       <PaymentElement />
       <AddressForm />
       <button
